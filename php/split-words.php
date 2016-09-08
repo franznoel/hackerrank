@@ -10,8 +10,13 @@ for ($i=0;$i<$T;$i++) {
     $left_word = [];
     $right_word = [];
 
+    $alphas = range('A', 'Z');
+    $alpha_small = range('a','z');
+    $alphabet = array_merge($alphas,$alpha_small); 
+    // print_r($alphas);
+
     for ($j=0;$j<count($letters);$j++) {
-        if(ctype_alpha($letters[$j])) {
+        if(in_array($letters[$j],$alphabet)) {
             if ($j%2==0) {
                 if ($letters[$i]!= "\n")
                     array_push($left_word,$letters[$j]);
@@ -21,9 +26,6 @@ for ($i=0;$i<$T;$i++) {
             }
         }
     }
-
-    // print_r($left_word);
-    // print_r($right_word);
     
     $lw = implode('',$left_word);
     $rw = implode('',$right_word);
